@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Obrigado por vir à festa!</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Comic Sans MS', cursive;
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: background-color 0.5s ease;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      max-width: 360px;
+      width: 90%;
+      z-index: 10;
+      text-align: center;
+    }
+
+    .theme-mickey {
+      background-color: #e6f0fa;
+      color: #2c3e50;
+    }
+
+    .theme-minnie {
+      background-color: #fce4ec;
+      color: #880e4f;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 10px;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      transform: rotate(45deg);
+      animation: fall 6s linear infinite;
+      opacity: 0.8;
+      top: -30px;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: inherit;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-30px) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Obrigado por vir à festa!</h1>
+    <p id="message-1"></p>
+    <p id="message-2"></p>
+    <p>Com carinho,</p>
+    <p id="final-msg"><strong>Família do(a) aniversariante ❤️</strong></p>
+  </div>
+
+  <script>
+    const isMickey = new Date().getSeconds() % 2 === 0;
+
+    const body = document.body;
+    const msg1 = document.getElementById('message-1');
+    const msg2 = document.getElementById('message-2');
+    const finalMsg = document.getElementById('final-msg');
+
+    const heartColor = isMickey ? '#a3c8f2' : '#f48fb1';
+    const emojiHeart = isMickey ? '💙' : '💗';
+
+    if (isMickey) {
+      body.classList.add('theme-mickey');
+      msg1.innerText = 'Foi um prazer ter você conosco nesse dia tão especial.';
+      msg2.innerText = 'Esperamos que tenha se divertido tanto quanto nós!';
+    } else {
+      body.classList.add('theme-minnie');
+      msg1.innerText = 'Foi maravilhoso celebrar esse momento com você.';
+      msg2.innerText = 'Esperamos que tenha curtido cada momento!';
+    }
+
+    finalMsg.innerHTML = `<strong>Grupo Dany ${emojiHeart}</strong>`;
+
+    // Cria corações caindo do topo
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 4 + Math.random() * 3 + 's';
+      heart.style.backgroundColor = heartColor;
+      heart.style.zIndex = 1;
+      heart.style.opacity = 0.6 + Math.random() * 0.4;
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
