@@ -101,11 +101,11 @@
 </head>
 <body>
   <div class="container">
-    <h1>Obrigado por vir à festa!</h1>
+    <h1>✨ Muito obrigado por fazerem parte da nossa mágica comemoração da Disney! ✨</h1>
     <p id="message-1"></p>
     <p id="message-2"></p>
     <p>Com carinho,</p>
-    <p id="final-msg"><strong>Família do(a) aniversariante ❤️</strong></p>
+    <p id="final-msg"><strong>Dany, Mary e Josy ❤️</strong></p>
   </div>
 
   <script>
@@ -121,15 +121,15 @@
 
     if (isMickey) {
       body.classList.add('theme-mickey');
-      msg1.innerText = 'Foi um prazer ter você conosco nesse dia tão especial.';
-      msg2.innerText = 'Esperamos que tenha se divertido tanto quanto nós!';
+      msg1.innerText = 'Cada sorriso, abraço e momento vivido juntos fez esse dia se tornar inesquecível. Foi incrível ver tantos amigos  entrando no clima encantado e celebrando conosco com tanta alegria e fantasia!';
+      msg2.innerText = 'Esperamos que tenham se divertido tanto quanto nós e que a magia desse dia continue no coração de cada um.';
     } else {
       body.classList.add('theme-minnie');
-      msg1.innerText = 'Foi maravilhoso celebrar esse momento com você.';
-      msg2.innerText = 'Esperamos que tenha curtido cada momento!';
+      msg1.innerText = 'Cada sorriso, abraço e momento vivido juntos fez esse dia se tornar inesquecível. Foi incrível ver tantos amigos  entrando no clima encantado e celebrando conosco com tanta alegria e fantasia!';
+      msg2.innerText = 'Esperamos que tenham se divertido tanto quanto nós e que a magia desse dia continue no coração de cada um.';
     }
 
-    finalMsg.innerHTML = `<strong>Grupo Dany ${emojiHeart}</strong>`;
+    finalMsg.innerHTML = `<strong>Dany, Mary e Josy ${emojiHeart}</strong>`;
 
     // Cria corações caindo do topo
     function createHeart() {
